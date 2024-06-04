@@ -1,0 +1,61 @@
+\mode<presentation>
+
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamertemplate{items}[circle]
+\usebeamercolor[fg]{normal text}
+
+\setbeamertemplate{background}{
+\begin{tikzpicture}
+  
+\ifnum\thepage>1\relax%
+% background for pages > 1 
+	%\fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+\else 
+  % background for the title page
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+
+  % background logo
+  \node[inner sep=0pt, opacity=0.5pt] (background) at (7,5){\includegraphics[width=\paperwidth, height=\paperheight]{graphics/MMFBackground.pdf}};
+  
+  
+  \node[inner sep=0pt] (logo) at (2.6,7.8) {\includegraphics[width=2cm]{graphics/MMFLogo.pdf}};
+  
+
+  % line between institute and author
+%  \fill[color=UniOrange] (0,7.1) rectangle(1,7.15);  
+%  \fill[color=UniBlue] (1,7.1) rectangle(2,7.15);  
+%  \fill[color=UniBrown] (2,7.1) rectangle(\the\paperwidth,7.15);  
+
+\fi
+% in debug mode, show the grid
+\ifdefined\DEBUG
+	\draw[help lines,xstep=1,ystep=1,gray] (current page.south west) grid (current page.north east);
+\fi
+\end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{uniud}[1][]
+{
+
+
+%\begin{textblock*}{10cm}(2cm,1.35cm)
+%{\usebeamercolor[fg]{emailetc}\usebeamerfont{author}\insertinstitute}
+%\end{textblock*}
+
+\begin{textblock*}{10cm}(1.6cm,3cm)
+{\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle}
+\end{textblock*}
+
+\begin{textblock*}{10cm}(1.6cm,6.1cm)
+{\usebeamercolor[fg]{author}\usebeamerfont{author}\insertauthor}
+\end{textblock*}
+
+\begin{textblock*}{10cm}(1.6cm,8.1cm)
+{\usebeamercolor[fg]{emailetc}\usebeamerfont{author}\insertdate}
+\end{textblock*}
+
+}
+
+\mode
+<all>
